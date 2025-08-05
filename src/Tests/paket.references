@@ -1,0 +1,8 @@
+Aardvark.Base
+
+FsUnit
+NUnit
+NUnit3TestAdapter
+BenchmarkDotNet
+Microsoft.NET.Test.Sdk
+YoloDev.Expecto.TestSdk

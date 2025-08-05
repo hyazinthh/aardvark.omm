@@ -1,0 +1,37 @@
+**/.idea/
+**/.ionide/
+Aardvark.log
+/.paket
+bin/Release
+bin/Debug
+*.swp
+*.userprefs
+**/obj
+**/bin
+/packages
+!/packages/*.config
+/src/*.suo
+/bin/*.nupkg
+/src/.vs
+/paket-files
+/.fake
+/.paket/paket.exe
+/Aardvark.log
+/src/FablishInterop/Models.g.fs
+/.paket/Paket.Restore.targets
+/src/Aardvark.Service.Demo/*.TMP
+/src/Scratch/03 - LinePicking/.domaincache
+/src/Scratch/03 - LinePicking/Model.g.fs
+*.domaincache
+*.g.fs
+**/.vs
+/src/Scratch/11 - GeoJsonViewer/*.user
+/src/Scratch/17 - Serviced/17 - Serviced.fsproj.user
+/src/Scratch/17 - Serviced/Properties/PublishProfiles/FolderProfile.pubxml
+/src/Scratch/17 - Serviced/Properties/PublishProfiles/FolderProfile.pubxml.user
+/.paket/.store/*
+*.adaptifycache
+**/.DS_Store
+external/support
+external/build
+**.DotSettings.user

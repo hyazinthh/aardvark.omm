@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Aardvark.OMM", "Aardvark.OMM\Aardvark.OMM.fsproj", "{FE43B5F8-6B55-E40A-4C17-DC179DB10C67}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tests", "Tests\Tests.fsproj", "{1E628D20-7EB9-4DD6-8E0B-ED7062A27809}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE43B5F8-6B55-E40A-4C17-DC179DB10C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE43B5F8-6B55-E40A-4C17-DC179DB10C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE43B5F8-6B55-E40A-4C17-DC179DB10C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE43B5F8-6B55-E40A-4C17-DC179DB10C67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E628D20-7EB9-4DD6-8E0B-ED7062A27809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E628D20-7EB9-4DD6-8E0B-ED7062A27809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E628D20-7EB9-4DD6-8E0B-ED7062A27809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E628D20-7EB9-4DD6-8E0B-ED7062A27809}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {84AF37AB-BD16-49D3-AAC4-3DCCD4DDF780}
+	EndGlobalSection
+EndGlobal

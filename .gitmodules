@@ -1,0 +1,4 @@
+[submodule "external/omm-sdk"]
+	path = external/omm-sdk
+	url = https://github.com/NVIDIA-RTX/OMM.git
+	branch = v1.8.0
