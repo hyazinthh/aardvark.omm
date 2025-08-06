@@ -1,13 +1,12 @@
 ﻿namespace Aardvark.OMM
 
 open System
-open System.Runtime.CompilerServices
 open Aardvark.Base
 
 #nowarn "51"
 
-type Texture =
-    val private baker : Baker
+type internal Texture =
+    val private baker : API.Baker
     val mutable private handle : API.CpuTexture
 
     internal new (baker, handle) = { baker = baker; handle = handle }
@@ -16,14 +15,14 @@ type Texture =
 
     member this.Dispose() =
         if this.handle.IsValid then
-            API.Omm.cpuDestroyTexture(this.baker.Handle, this.handle) |> Result.check "failed to destroy texture"
+            API.Omm.cpuDestroyTexture(this.baker, this.handle) |> Result.check "failed to destroy texture"
             this.handle <- API.CpuTexture.Null
 
     interface IDisposable with
         member this.Dispose() = this.Dispose()
 
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
-module Texture =
+module internal Texture =
 
     let private getAlphaImage (pi: PixImage<'T>) : PixImage * int64 =
         let pi =
@@ -35,7 +34,7 @@ module Texture =
 
         pi, pi.VolumeInfo.FirstIndex * int64 sizeof<'T>
 
-    let ofPixImage (baker: Baker) (pi: PixImage) =
+    let ofPixImage (baker: API.Baker) (pi: PixImage) =
         let (pi, offset), format =
             match pi with
             | :? PixImage<uint8> as pi   -> getAlphaImage pi, API.CpuTextureFormat.UNorm8
@@ -49,12 +48,7 @@ module Texture =
             let mutable desc = API.CpuTextureDesc(format, API.CpuTextureFlags.None, &&mip, 1u)
 
             let mutable handle = API.CpuTexture.Null
-            API.Omm.cpuCreateTexture(baker.Handle, &desc, &handle) |> Result.check "failed to create texture"
+            API.Omm.cpuCreateTexture(baker, &desc, &handle) |> Result.check "failed to create texture"
 
             new Texture (baker, handle)
         )
-
-[<Sealed; AbstractClass; Extension>]
-type BakerTextureExtensions =
-
-    static member CreateTexture(this: Baker, pi: PixImage) = pi |> Texture.ofPixImage this

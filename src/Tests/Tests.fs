@@ -20,9 +20,6 @@ module OmmTests =
     let private checkHandleSize<'T>() =
         checkSize<'T> sizeof<nativeint>
 
-    let printMessage (severity: MessageSeverity) (message: string) =
-        printfn $"{severity}: {message}"
-
     [<Test>]
     let ``Struct and handle sizes``() =
         checkHandleSize<API.Baker>()
@@ -42,14 +39,5 @@ module OmmTests =
 
     [<Test>]
     let ``Create baker``() =
-        let baker = new Baker(printMessage)
+        let baker = new Baker()
         baker.Dispose()
-
-    [<Test>]
-    let ``Create texture``() =
-        use baker = new Baker(printMessage)
-
-        let pi = PixImage<uint8>(Col.Format.GrayAlpha, V2i(256))
-        use texture = pi |> Texture.ofPixImage baker
-
-        texture.Handle.IsValid |> should be True
