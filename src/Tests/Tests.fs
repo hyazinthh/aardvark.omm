@@ -13,33 +13,42 @@ module OmmTests =
     let init() =
         Aardvark.Init()
 
+    let private checkSize<'T> (expectedSize: int) =
+        sizeof<'T> |> should equal expectedSize
+        Marshal.SizeOf<'T>() |> should equal expectedSize
+
     let private checkHandleSize<'T>() =
-        sizeof<'T> |> should equal sizeof<nativeint>
-        Marshal.SizeOf<'T>() |> should equal sizeof<nativeint>
+        checkSize<'T> sizeof<nativeint>
 
     let printMessage (severity: MessageSeverity) (message: string) =
         printfn $"{severity}: {message}"
 
     [<Test>]
-    let ``Library Version``() =
+    let ``Struct and handle sizes``() =
+        checkHandleSize<API.Baker>()
+        checkHandleSize<API.CpuTexture>()
+        checkHandleSize<API.CpuBakeResult>()
+        checkHandleSize<API.CpuSerializedResult>()
+        checkHandleSize<API.CpuDeserializedResult>()
+        checkSize<API.CpuBakeInputDesc> 136
+        checkSize<API.CpuBakeResultDesc> 80
+
+    [<Test>]
+    let ``Library version``() =
         let version = Baker.LibraryVersion
         printfn "Version: %A" version
         version.Major |> should greaterThan 0uy
 
     [<Test>]
-    let ``Create Baker``() =
-        checkHandleSize<API.Baker>()
+    let ``Create baker``() =
         let baker = new Baker(printMessage)
         baker.Dispose()
 
     [<Test>]
-    let ``Create Texture``() =
-        checkHandleSize<API.CpuTexture>()
-
+    let ``Create texture``() =
         use baker = new Baker(printMessage)
 
-        let data = Matrix<uint8>(V2i(256))
-        let pi = PixImage<uint8>(data)
+        let pi = PixImage<uint8>(Col.Format.GrayAlpha, V2i(256))
         use texture = pi |> Texture.ofPixImage baker
 
         texture.Handle.IsValid |> should be True

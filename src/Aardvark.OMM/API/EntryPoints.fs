@@ -30,10 +30,40 @@ module internal Omm =
 
 
     [<DllImport(lib, EntryPoint = "ommCpuCreateTexture")>]
-    extern Result createCpuTexture(Baker baker, [<In>] CpuTextureDesc& desc, [<Out>] CpuTexture& outTexture)
+    extern Result cpuCreateTexture(Baker baker, [<In>] CpuTextureDesc& desc, [<Out>] CpuTexture& outTexture)
 
     [<DllImport(lib, EntryPoint = "ommCpuGetTextureDesc")>]
-    extern Result createGetCpuTextureDesc(CpuTexture texture, [<Out>] CpuTextureDesc& outDesc)
+    extern Result cpuGetTextureDesc(CpuTexture texture, [<Out>] CpuTextureDesc& outDesc)
 
     [<DllImport(lib, EntryPoint = "ommCpuDestroyTexture")>]
-    extern Result destroyCpuTexture(Baker baker, CpuTexture texture)
+    extern Result cpuDestroyTexture(Baker baker, CpuTexture texture)
+
+
+    [<DllImport(lib, EntryPoint = "ommCpuBake")>]
+    extern Result cpuBake(Baker baker, [<In>] CpuBakeInputDesc& bakeInputDesc, [<Out>] CpuBakeResult& outBakeResult)
+
+    [<DllImport(lib, EntryPoint = "ommCpuDestroyBakeResult")>]
+    extern Result cpuDestroyBakeResult(CpuBakeResult bakeResult)
+
+    [<DllImport(lib, EntryPoint = "ommCpuGetBakeResultDesc")>]
+    extern Result cpuGetBakeResultDesc(CpuBakeResult bakeResult, CpuBakeResultDesc* * desc)
+
+
+    [<DllImport(lib, EntryPoint = "ommCpuSerialize")>]
+    extern Result cpuSerialize(Baker baker, [<In>] CpuDeserializedDesc& desc, [<Out>] CpuSerializedResult& outResult)
+
+    [<DllImport(lib, EntryPoint = "ommCpuGetSerializedResultDesc")>]
+    extern Result cpuGetSerializedResultDesc(CpuSerializedResult result, CpuBlobDesc* * desc)
+
+    [<DllImport(lib, EntryPoint = "ommCpuDestroySerializedResultDesc")>]
+    extern Result cpuDestroySerializedResultDesc(CpuSerializedResult result)
+
+
+    [<DllImport(lib, EntryPoint = "ommCpuDeserialize")>]
+    extern Result cpuDeserialize(Baker baker, [<In>] CpuBlobDesc& desc, [<Out>] CpuDeserializedResult& outResult)
+
+    [<DllImport(lib, EntryPoint = "ommCpuGetDeserializedResultDesc")>]
+    extern Result cpuGetDeserializedResultDesc(CpuDeserializedResult result, CpuDeserializedDesc* * desc)
+
+    [<DllImport(lib, EntryPoint = "ommCpuDestroyDeserializedResultDesc")>]
+    extern Result cpuDestroyDeserializedResultDesc(CpuDeserializedResult result)

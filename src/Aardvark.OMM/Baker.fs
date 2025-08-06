@@ -4,7 +4,7 @@ open System
 
 type Baker private (messageCallback : Func<MessageSeverity, string, unit>) =
     let mutable handle =
-        let mutable baker = Unchecked.defaultof<API.Baker>
+        let mutable baker = API.Baker.Null
 
         let messageCallback =
             if isNull messageCallback then
@@ -12,7 +12,7 @@ type Baker private (messageCallback : Func<MessageSeverity, string, unit>) =
             else
                 API.MessageCallback(fun severity message _ -> messageCallback.Invoke(severity, message))
 
-        let mutable desc = API.BakerCreationDesc(BakerType.CPU, messageCallback)
+        let mutable desc = API.BakerCreationDesc(API.BakerType.CPU, messageCallback)
         API.Omm.createBaker(&desc, &baker) |> Result.check "failed to create baker"
         baker
 

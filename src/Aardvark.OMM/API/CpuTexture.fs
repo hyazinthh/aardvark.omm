@@ -49,8 +49,8 @@ type CpuTextureDesc =
          }
    end
 
- [<Struct>]
- type CpuTexture =
+[<Struct>]
+type CpuTexture =
     private | CpuTexture of nativeint
     member this.IsValid = let (CpuTexture ptr) = this in ptr <> 0n
     static member Null = CpuTexture 0n

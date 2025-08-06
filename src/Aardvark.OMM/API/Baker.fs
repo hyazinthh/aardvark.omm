@@ -1,9 +1,12 @@
 ﻿namespace Aardvark.OMM.API
 
-open Aardvark.OMM
 open System.Runtime.InteropServices
 
 #nowarn "9"
+
+type BakerType =
+    | GPU = 0
+    | CPU = 1
 
 [<StructLayout(LayoutKind.Explicit, Size = 56)>]
 type BakerCreationDesc =

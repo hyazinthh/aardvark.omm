@@ -20,6 +20,10 @@
     <Compile Include="Enums.fs" />
     <Compile Include="API\CpuTexture.fs" />
     <Compile Include="API\MessageInterface.fs" />
+    <Compile Include="API\SamplerDesc.fs" />
+    <Compile Include="API\CpuBakeInputDesc.fs" />
+    <Compile Include="API\CpuBakeResult.fs" />
+    <Compile Include="API\Serialization.fs" />
     <Compile Include="API\Baker.fs" />
     <Compile Include="API\LibraryDesc.fs" />
     <Compile Include="API\EntryPoints.fs" />
