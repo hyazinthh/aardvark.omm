@@ -32,6 +32,7 @@ module OmmTests =
         checkHandleSize<API.CpuDeserializedResult>()
         checkSize<API.CpuBakeInputDesc> 136
         checkSize<API.CpuBakeResultDesc> 80
+        checkSize<API.DebugSaveImagesDesc> 24
 
     [<Test>]
     let ``Library version``() =

@@ -67,3 +67,16 @@ module internal Omm =
 
     [<DllImport(lib, EntryPoint = "ommCpuDestroyDeserializedResultDesc")>]
     extern Result cpuDestroyDeserializedResultDesc(CpuDeserializedResult result)
+
+
+    [<DllImport(lib, EntryPoint = "ommDebugSaveAsImages")>]
+    extern Result debugSaveAsImages(Baker baker, [<In>] CpuBakeInputDesc& bakeInputDesc, [<In>] CpuBakeResultDesc& res, [<In>] DebugSaveImagesDesc& desc)
+
+    [<DllImport(lib, EntryPoint = "ommDebugGetStats")>]
+    extern Result debugGetStats(Baker baker, [<In>] CpuBakeResultDesc& res, [<Out>] DebugStats& out)
+
+    [<DllImport(lib, EntryPoint = "ommDebugGetStats2")>]
+    extern Result debugGetStats2(Baker baker, CpuBakeResult res, [<Out>] DebugStats& out)
+
+    [<DllImport(lib, EntryPoint = "ommDebugSaveBinaryToDisk")>]
+    extern Result debugSaveBinaryToDisk(Baker baker, [<In>] CpuBlobDesc& data, string path)
